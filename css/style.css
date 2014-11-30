@@ -281,7 +281,7 @@ img{
 	border-radius:3px;
 }
 #adbox div.footer ul li.selected p, #adbox div.footer ul li.selected p a{
-	color:#5c6164;
+	color:#000000;
 }
 #adbox div.footer span.bottom-shadow{
 	background:url(../images/bottom-shadow.gif) no-repeat left top;
