@@ -12,12 +12,18 @@
         var text = "";
         var textDirection = "";
 
+        var xRect = 0;
+        var yRect = -20;
+        var highRect = 45;
+        var widthRect = 460;
+
         $(function () {
             context = document.getElementById("cvs").getContext("2d");
             setInterval("animate()",80);
 
             textDirection = "left";
-            textXpos = 500;
+            textXpos = widthRect;
+            textYpos = 0;
             text = "Fares & Partners: Consulenza e Assistenza Tributaria - Consulenza contabile e fiscale - Assistenza Legale";
             //text.link("http://nctm.it/aree-di-attivita/ambiente-e-sicurezza-nei-luoghi-di-lavoro/");
             text.href = "http://www.google.it";
@@ -25,19 +31,21 @@
         });
 
         function animate() {
-            // Clear screen
-            context.clearRect(0, 0, 500, 25);
-            context.globalAlpha = 1;
-            context.fillStyle = '#fff';
-            //context.fillRect(0, 0, 500, 20);
 
+            // Clear screen
+            context.clearRect(xRect, yRect, widthRect, highRect);
+            context.globalAlpha = 1;
+            //context.fillStyle = '#fff';
+            context.fillStyle = '#0E0045';
+            context.fillRect(xRect, yRect, widthRect, highRect);
+            context.fillStyle = '#fff';
             var metrics = context.measureText(text);
             var textWidth = metrics.width;
 
             if (textDirection == "right") {
                 textXpos += 2;
 
-                if (textXpos > 500 - textWidth) {
+                if (textXpos > widthRect - textWidth) {
                     //textDirection = "left";
                     textXpos = 5;
                 }
@@ -45,23 +53,30 @@
             else {
                 textXpos -= 2;
                 
-                if (textXpos < -800) {
+                if (textXpos > widthRect + textWidth) {
                     //textDirection = "right";
-                    textXpos = 500;
+                    textXpos = widthRect;
                 }
             }
 
             context.font = 'bold 20px _sans';
             //context.font = "italic small-caps bold 12px arial";
-            context.fillStyle = '#0E0045';
+            //context.fillStyle = '#0E0045';
+            context.fillStyle = '#fffff';
             context.textBaseline = 'top';
-            context.fillText(text, textXpos, 0);
+            context.fillText(text, textXpos, textYpos);
         }
     </script>
 
 </head>
 <body>
 <div id="header"><a href="index.html" id="logo"><img src="images/logo2.png" alt="" /></a>
+    <div id="page">
+        <canvas id="cvs" width="450" height="25">
+            <!-- commentato: Your browser does not support the HTML 5 Canvas. -->
+
+        </canvas>
+    </div>
   <div id="menu">
     <ul>
       <li class="first selected"><a href="index.html">Home</a></li>
@@ -97,18 +112,14 @@
     <div class="images"> <img src="images/discussing4.jpg" alt="" class="preview" /> <img src="images/shake-hands.jpg" alt="" height="144" width="230px" /> <img src="images/professionals3.jpg" alt="" height="135" width="230px" class="last" /> </div>
 
     <div class="details">
-        <div id="page">
-            <canvas id="cvs" width="500" height="25">
-                <!-- commentato: Your browser does not support the HTML 5 Canvas. -->
 
-            </canvas>
-        </div>
           <p> <span> </span>    
               Fares & Partners è uno studio legale tributario composto da un team di avvocati e dottori commercialisti che fornisce ai clienti un'offerta completa (integrata) di assistenza legale e tributaria.  
          </p>
 
     </div>
   </div>
+
   <div class="footer">
     <ul>
       <li class="selected"> <a href="#"><img src="images/tributario.png" alt="" /></a>
