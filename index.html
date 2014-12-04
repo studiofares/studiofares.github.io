@@ -53,7 +53,7 @@
             else {
                 textXpos -= 2;
                 
-                if (textXpos > widthRect + textWidth) {
+                if (textXpos < -textWidth) {
                     //textDirection = "right";
                     textXpos = widthRect;
                 }
